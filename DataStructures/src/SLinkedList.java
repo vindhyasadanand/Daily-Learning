@@ -1,4 +1,3 @@
-
 class Node
 {
 	Node next;
@@ -28,6 +27,7 @@ public class SLinkedList
 		}
 		ele.next = cur;
 	}
+	//to add element at the beginning
 	public void prepend(int data)
 	{
 		System.out.println("Am inside append");
@@ -41,6 +41,7 @@ public class SLinkedList
 		node.next = head;
 		head = node;
 	}
+	//to delete an element with given value
 	public void deleteNodewithValue(int data)
 	{
 		//check head is null
@@ -65,6 +66,7 @@ public class SLinkedList
 		
 		
 	}
+	//to print the list
 	public void printnode()
 	{
 		Node cur = head;
@@ -76,6 +78,7 @@ public class SLinkedList
 		}
 		System.out.println();
 	}
+	//to find length of the list
 	public void length()
 	{
 		Node cur = head;
@@ -87,6 +90,7 @@ public class SLinkedList
 		}
 		System.out.println("Length of the list is"+len);
 	}
+	//to insert an element at a given position
 	public void insertatgivenPos(int data,int pos)
 	{
 		System.out.println("Am inside insert at given pos");
@@ -119,6 +123,7 @@ public class SLinkedList
 		
 		
 	}
+	//delete an element at the beginning
 	public void deletebeginning() 
 	{
 		if(head==null)
@@ -129,6 +134,7 @@ public class SLinkedList
 		head = head.next;
 		
 	}
+	//to delete an element at the end
 	public void deleteend()
 	{
 		if(head==null)
@@ -145,6 +151,7 @@ public class SLinkedList
 		}
 		prev.next = null;
 	}
+	//delete at specific position
 	public void delatspecificpos(int pos)
 	{
 		if(head==null)
@@ -169,6 +176,7 @@ public class SLinkedList
 		}
 	
 	}
+	//to delete element with the key
 	public void deletenodewithKey(int key)
 	{
 		if(head==null)
@@ -189,6 +197,61 @@ public class SLinkedList
 			cur = cur.next;
 		}
 	}
+	//to search an element
+	public void search(int data)
+	{
+		if(head==null)
+		{
+			System.out.println("Empty list");
+			return;
+		}
+		Node cur = head;
+		while(cur!=null)
+		{
+			if(data==cur.data)
+			{
+				System.out.println("Element found");
+				return;
+			}
+			cur = cur.next;
+		}
+		System.out.println("Element does not found");
+	}
+	//to reverse an element
+	public void reverse()
+	{
+		if(head==null)
+		{
+			System.out.println("List is empty");
+			return;
+		}
+		Node cur = head;
+		Node prev=null,first;
+		while(cur!=null)
+		{
+			first = cur.next;
+			cur.next = prev;
+			prev = cur;
+			cur = first;
+		}
+	    head = prev;
+		System.out.println("After reversing");
+	}
+	//to find middle element
+	public void middlenode()
+	{
+		
+		Node fast = head;
+		Node slow = head;
+		while(fast!=null&&fast.next!=null)
+		{
+			fast = fast.next.next;
+			slow = slow.next;
+			
+		}
+	System.out.println("Middle ele" + slow.data);
+		
+	}
 	public static void main(String[] args) 
 	{
 		System.out.println("Am inside main");
@@ -198,15 +261,19 @@ public class SLinkedList
 		list.append(30);
 		list.append(40);
 		list.insertatgivenPos(100, 3);
+		list.append(50);
 		list.printnode();
 		//list.deletebeginning();
 		//list.deleteend();
-		list.length();
+		//list.length();
 		//list.delatspecificpos(1);
-		list.deletenodewithKey(100);
+		//list.deletenodewithKey(100);
+		//list.printnode();
+		//list.search(10);
+		//list.search(50);
+		//list.reverse();
+		list.middlenode();
 		list.printnode();
-		
-		
 	}
 	
 
